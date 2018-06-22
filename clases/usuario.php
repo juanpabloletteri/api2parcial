@@ -7,25 +7,21 @@ class usuario {
     private $_password;
     private $_nombre;
     private $_apellido;
-    private $_dni;
-    private $_telefono;
     private $_tipo;
 
     //AGREGAR usuario
-    public static function agregarUsuario($mail,$password,$nombre,$apellido,$dni,$telefono,$tipo)
+    public static function agregarUsuario($mail,$password,$nombre,$apellido,$tipo)
     {
         $rta = false;
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
         $consulta =$objetoAccesoDato->RetornarConsulta("INSERT into  
-        usuarios (mail,password,nombre,apellido,dni,telefono,tipo)
-        values(:mail,:password,:nombre,:apellido,:dni,:telefono,:tipo)");
+        usuarios (mail,password,nombre,apellido,tipo)
+        values(:mail,:password,:nombre,:apellido,:tipo)");
 
         $consulta->bindValue(':mail',$mail);
         $consulta->bindValue(':password', $password);
         $consulta->bindValue(':nombre',$nombre);
         $consulta->bindValue(':apellido', $apellido);
-        $consulta->bindValue(':dni', $dni);
-        $consulta->bindValue(':telefono',$telefono);
         $consulta->bindValue(':tipo',$tipo);
         
         if($consulta->execute()){
@@ -56,7 +52,7 @@ class usuario {
     }
 
    //MODIFICAR usuario
-    public static function modificarUsuario($id,$mail,$password,$nombre,$apellido,$dni,$telefono,$tipo){
+    public static function modificarUsuario($id,$mail,$password,$nombre,$apellido,$tipo){
         $rta = false;
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE `usuarios` 
@@ -64,8 +60,6 @@ class usuario {
         `password`= :password,
         `nombre`= :nombre,
         `apellido`=:apellido,
-        `dni`= :dni, 
-        `telefono`= :telefono,
         `tipo`= :tipo
         WHERE id_usuario = :id");
 
@@ -74,8 +68,6 @@ class usuario {
         $consulta->bindValue(':password', $password);
         $consulta->bindValue(':nombre',$nombre);
         $consulta->bindValue(':apellido', $apellido);
-        $consulta->bindValue(':dni', $dni);
-        $consulta->bindValue(':telefono',$telefono);
         $consulta->bindValue(':tipo',$tipo);
 
         if ($consulta->execute()){
