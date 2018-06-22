@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2018 a las 05:57:12
+-- Tiempo de generación: 22-06-2018 a las 06:23:55
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -43,8 +43,8 @@ CREATE TABLE `mascotas` (
 --
 
 INSERT INTO `mascotas` (`id_mascota`, `id_duenio`, `nombre`, `raza`, `color`, `edad`, `tipo`) VALUES
-(1, 1, 'pichy', 'cocker', 'rubio', 5, 1),
-(2, 1, 'michy', 'siames', 'negro', 6, 0);
+(1, 1, 'pichy', 'cocker', 'rubio', 1, 200),
+(2, 2, 'michy', 'siames', 'negro', 10, 100);
 
 -- --------------------------------------------------------
 
