@@ -121,12 +121,13 @@ $app->post('/borrarUsuario',function ($request,$response){
 //AGREGAR Mascota  *************************/
 $app->post('/agregarMascota',function($request,$response){
     $datos = $request->getParsedBody();
+    $id_duenio = $datos['id_duenio'];
     $nombre = $datos['nombre'];
     $raza = $datos['raza'];
     $color = $datos['color'];
     $edad = $datos['edad'];
     $tipo = $datos['tipo'];
-    $response->write(mascota::agregarMascota($nombre,$raza,$color,$edad,$tipo));
+    $response->write(mascota::agregarMascota($id_duenio,$nombre,$raza,$color,$edad,$tipo));
 });
 
 //TRAER TODOS LOS Mascotas *************************/

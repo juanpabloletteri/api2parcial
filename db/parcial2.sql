@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2018 a las 03:10:53
+-- Tiempo de generación: 22-06-2018 a las 05:57:12
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -38,6 +38,14 @@ CREATE TABLE `mascotas` (
   `tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `mascotas`
+--
+
+INSERT INTO `mascotas` (`id_mascota`, `id_duenio`, `nombre`, `raza`, `color`, `edad`, `tipo`) VALUES
+(1, 1, 'pichy', 'cocker', 'rubio', 5, 1),
+(2, 1, 'michy', 'siames', 'negro', 6, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +72,16 @@ CREATE TABLE `usuarios` (
   `apellido` varchar(50) COLLATE utf16_spanish_ci NOT NULL,
   `tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `mail`, `password`, `nombre`, `apellido`, `tipo`) VALUES
+(1, 'roberto@gmail.com', '111111', 'roberto', 'carlos', 2),
+(2, 'rruben@gmail.com', '111111', 'ricardo', 'ruben', 2),
+(3, 'mrod@gmail.com', '111111', 'micaela', 'rodriguez', 2),
+(4, 'mlett@gmail.com', '111111', 'mario', 'mazzeo', 2);
 
 --
 -- Índices para tablas volcadas
@@ -97,7 +115,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
@@ -109,7 +127,7 @@ ALTER TABLE `turnos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
