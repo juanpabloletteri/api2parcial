@@ -205,10 +205,10 @@ $app->get('/traerTodosLosTurnos',function ($request,$response){
 });
 
 //TRAER Turno POR ID *************************/
-$app->post('/traerTurnoPorId',function ($request,$response){
+$app->post('/traerTurnoPorIdDuenio',function ($request,$response){
     $datos = $request->getParsedBody();
     $id = $datos['id'];
-    $response->write(turno::traerTurnoPorId($id));
+    $response->write(turno::traerTurnoPorIdDuenio($id));
     return $response;
 });
 

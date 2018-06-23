@@ -41,10 +41,14 @@ class turno {
     }
 
     //TRAER Turno POR ID
-    public static function traerTurnoPorId($id)
+    public static function traerTurnoPorIdDuenio($id)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM turnos WHERE id_turno=:id");
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * 
+        FROM turnos AS t, mascotas AS m
+        WHERE t.id_mascota=m.id_mascota
+        AND m.id_duenio=:id
+        ");
         $consulta->bindValue(":id",$id);
         $consulta->execute();
         $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
