@@ -33,6 +33,16 @@ $app->get('[/]', function (Request $request, Response $response) {
 
 });
 
+//************ LOGIN ************//
+$app->post('/login', function (Request $request, Response $response) {
+    $datos = $request->getParsedBody();
+    $mail = $datos["mail"];
+    $password = $datos["password"];
+    $response->write(Usuario::Login($mail,$password));
+    //$response->write($pw);
+    return $response;
+});
+
 //************ AUTENTICACION ************//
 $mdwAuth = function ( $request, $response, $next) {
     $token = $request->getHeader('token');
