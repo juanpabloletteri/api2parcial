@@ -8,6 +8,7 @@ require_once './clases/AutentificadorJWT.php';
 
 require_once './clases/usuario.php';
 require_once './clases/mascota.php';
+require_once './clases/turno.php';
 
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
@@ -186,6 +187,67 @@ $app->post('/borrarMascota',function ($request,$response){
 
 //**********************************//
 
+//************ Turnos ************//
 
+//AGREGAR Turno  *************************/
+$app->post('/agregarTurno',function($request,$response){
+    $datos = $request->getParsedBody();
+    $id_mascota = $datos['id_mascota'];
+    $fecha = $datos['fecha'];
+    $observaciones = $datos['observaciones'];
+    $response->write(turno::agregarTurno($id_mascota,$fecha,$observaciones));
+});
+
+//TRAER TODOS LOS Turnos *************************/
+$app->get('/traerTodosLosTurnos',function ($request,$response){
+    $response->write(turno::traerTodosLosTurnos());
+    return $response;
+});
+
+//TRAER Turno POR ID *************************/
+$app->post('/traerTurnoPorId',function ($request,$response){
+    $datos = $request->getParsedBody();
+    $id = $datos['id'];
+    $response->write(turno::traerTurnoPorId($id));
+    return $response;
+});
+
+//TRAER Turno POR MASCOTA *************************/
+$app->post('/traerTurnosPorMascota',function ($request,$response){
+    $datos = $request->getParsedBody();
+    $id = $datos['id'];
+    $response->write(turno::traerTurnosPorMascota($id));
+    return $response;
+});
+
+//TRAER Turno POR TIPO DE MASCOTA *************************/
+$app->post('/traerTurnosPorTipoDeMascota',function ($request,$response){
+    $datos = $request->getParsedBody();
+    $tipo = $datos['tipo'];
+    $response->write(turno::traerTurnosPorTipoDeMascota($tipo));
+    return $response;
+});
+
+//MODIFICAR Turno *************************/
+$app->post('/modificarTurno',function($request,$response){
+    $datos = $request->getParsedBody();
+    $id = $datos['id'];
+    $id_mascota = $datos['id_mascota'];
+    $fecha = $datos['fecha'];
+    $observaciones = $datos['observaciones'];
+    $response->write(turno::modificarTurno($id,$id_mascota,$fecha,$observaciones));
+
+    return $response;
+});
+
+//BORRAR Turno *************************/
+$app->post('/borrarTurno',function ($request,$response){
+    $datos = $request->getParsedBody();
+    $id = $datos['id'];
+    $response->write(turno::borrarTurno($id));
+    return $response;
+});
+
+//**********************************//
 
 $app->run();
