@@ -38,9 +38,9 @@ $app->post('/login', function (Request $request, Response $response) {
     $datos = $request->getParsedBody();
     $mail = $datos["mail"];
     $password = $datos["password"];
-    $response->write(Usuario::Login($mail,$password));
+    $newResponse = $response->withJson(Usuario::Login($mail,$password));
     //$response->write($pw);
-    return $response;
+    return $newResponse;
 });
 
 //************ AUTENTICACION ************//
