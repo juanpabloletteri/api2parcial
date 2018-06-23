@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2018 a las 06:23:55
+-- Tiempo de generación: 23-06-2018 a las 07:14:40
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -44,7 +44,10 @@ CREATE TABLE `mascotas` (
 
 INSERT INTO `mascotas` (`id_mascota`, `id_duenio`, `nombre`, `raza`, `color`, `edad`, `tipo`) VALUES
 (1, 1, 'pichy', 'cocker', 'rubio', 1, 200),
-(2, 2, 'michy', 'siames', 'negro', 10, 100);
+(2, 2, 'michy', 'siames', 'negro', 10, 100),
+(3, 3, 'cucho', 'siames', 'gris', 4, 100),
+(4, 3, 'pepito', 'labrador', 'marron', 1, 200),
+(5, 5, 'michifus', 'alpino', 'blanco', 12, 100);
 
 -- --------------------------------------------------------
 
@@ -55,8 +58,18 @@ INSERT INTO `mascotas` (`id_mascota`, `id_duenio`, `nombre`, `raza`, `color`, `e
 CREATE TABLE `turnos` (
   `id_turno` int(11) NOT NULL,
   `id_mascota` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  `observaciones` varchar(200) COLLATE utf16_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `turnos`
+--
+
+INSERT INTO `turnos` (`id_turno`, `id_mascota`, `fecha`, `observaciones`) VALUES
+(1, 2, '2018-06-12', 'pulgas'),
+(2, 3, '2018-06-03', 'pierna rota'),
+(3, 4, '2018-07-10', 'castracion');
 
 -- --------------------------------------------------------
 
@@ -78,10 +91,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `mail`, `password`, `nombre`, `apellido`, `tipo`) VALUES
-(1, 'roberto@gmail.com', '111111', 'roberto', 'carlos', 2),
+(1, '1', '1', 'roberto', 'carlos', 1),
 (2, 'rruben@gmail.com', '111111', 'ricardo', 'ruben', 2),
 (3, 'mrod@gmail.com', '111111', 'micaela', 'rodriguez', 2),
-(4, 'mlett@gmail.com', '111111', 'mario', 'mazzeo', 2);
+(4, 'mlett@gmail.com', '111111', 'mario', 'mazzeo', 2),
+(5, '2', '2', '2', '2', 2),
+(7, 'pepitop@hotmail.com', '123456', 'pepe', 'torres', 2);
 
 --
 -- Índices para tablas volcadas
@@ -115,19 +130,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

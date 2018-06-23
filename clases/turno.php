@@ -31,7 +31,10 @@ class turno {
     public static function traerTodosLosTurnos()
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM turnos");
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * 
+        FROM turnos AS t, mascotas AS m
+        WHERE t.id_mascota=m.id_mascota
+        ");
         $consulta->execute();
         $consulta = $consulta->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($consulta);
