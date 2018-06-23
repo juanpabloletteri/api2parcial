@@ -88,13 +88,13 @@ $app->post('/agregarUsuario',function($request,$response){
     $apellido = $datos['apellido'];
     $tipo = $datos['tipo'];
     $response->write(usuario::agregarUsuario($mail,$password,$nombre,$apellido,$tipo));
-});
+})->add($mdwAuth);
 
 //TRAER TODOS LOS USUARIOS *************************/
 $app->get('/traerTodosLosUsuarios',function ($request,$response){
     $response->write(usuario::traerTodosLosUsuarios());
     return $response;
-});
+})->add($mdwAuth);
 
 //TRAER USUARIO POR ID *************************/
 $app->post('/traerUsuarioPorId',function ($request,$response){
@@ -102,7 +102,7 @@ $app->post('/traerUsuarioPorId',function ($request,$response){
     $id = $datos['id'];
     $response->write(usuario::traerUsuarioPorId($id));
     return $response;
-});
+})->add($mdwAuth);
 
 //MODIFICAR USUARIO *************************/
 $app->post('/modificarUsuario',function($request,$response){
@@ -116,7 +116,7 @@ $app->post('/modificarUsuario',function($request,$response){
     $response->write(usuario::modificarUsuario($id,$mail,$password,$nombre,$apellido,$tipo));
 
     return $response;
-});
+})->add($mdwAuth);
 
 //BORRAR USUARIO *************************/
 $app->post('/borrarUsuario',function ($request,$response){
@@ -124,7 +124,7 @@ $app->post('/borrarUsuario',function ($request,$response){
     $id = $datos['id'];
     $response->write(usuario::borrarUsuario($id));
     return $response;
-});
+})->add($mdwAuth);
 
 ///////////////////////////////////////////////////////////////////////
 //************ MASCOTAS ************//
@@ -139,13 +139,13 @@ $app->post('/agregarMascota',function($request,$response){
     $edad = $datos['edad'];
     $tipo = $datos['tipo'];
     $response->write(mascota::agregarMascota($id_duenio,$nombre,$raza,$color,$edad,$tipo));
-});
+})->add($mdwAuth);
 
 //TRAER TODOS LOS Mascotas *************************/
 $app->get('/traerTodasLasMascotas',function ($request,$response){
     $response->write(mascota::traerTodasLasMascotas());
     return $response;
-});
+})->add($mdwAuth);
 
 //TRAER Mascota POR ID *************************/
 $app->post('/traerMascotaPorId',function ($request,$response){
@@ -153,7 +153,7 @@ $app->post('/traerMascotaPorId',function ($request,$response){
     $id = $datos['id'];
     $response->write(mascota::traerMascotaPorId($id));
     return $response;
-});
+})->add($mdwAuth);
 
 //TRAER Mascota POR DUENIO *************************/
 $app->post('/traerMascotasPorDuenio',function ($request,$response){
@@ -161,7 +161,7 @@ $app->post('/traerMascotasPorDuenio',function ($request,$response){
     $id = $datos['id'];
     $response->write(mascota::traerMascotasPorDuenio($id));
     return $response;
-});
+})->add($mdwAuth);
 
 //MODIFICAR Mascota *************************/
 $app->post('/modificarMascota',function($request,$response){
@@ -175,7 +175,7 @@ $app->post('/modificarMascota',function($request,$response){
     $response->write(mascota::modificarMascota($id,$nombre,$raza,$color,$edad,$tipo));
 
     return $response;
-});
+})->add($mdwAuth);
 
 //BORRAR Mascota *************************/
 $app->post('/borrarMascota',function ($request,$response){
@@ -183,7 +183,7 @@ $app->post('/borrarMascota',function ($request,$response){
     $id = $datos['id'];
     $response->write(mascota::borrarMascota($id));
     return $response;
-});
+})->add($mdwAuth);
 
 //**********************************//
 
@@ -196,13 +196,13 @@ $app->post('/agregarTurno',function($request,$response){
     $fecha = $datos['fecha'];
     $observaciones = $datos['observaciones'];
     $response->write(turno::agregarTurno($id_mascota,$fecha,$observaciones));
-});
+})->add($mdwAuth);
 
 //TRAER TODOS LOS Turnos *************************/
 $app->get('/traerTodosLosTurnos',function ($request,$response){
     $response->write(turno::traerTodosLosTurnos());
     return $response;
-});
+})->add($mdwAuth);
 
 //TRAER Turno POR ID *************************/
 $app->post('/traerTurnoPorIdDuenio',function ($request,$response){
@@ -210,7 +210,7 @@ $app->post('/traerTurnoPorIdDuenio',function ($request,$response){
     $id = $datos['id'];
     $response->write(turno::traerTurnoPorIdDuenio($id));
     return $response;
-});
+})->add($mdwAuth);
 
 //TRAER Turno POR MASCOTA *************************/
 $app->post('/traerTurnosPorMascota',function ($request,$response){
@@ -218,7 +218,7 @@ $app->post('/traerTurnosPorMascota',function ($request,$response){
     $id = $datos['id'];
     $response->write(turno::traerTurnosPorMascota($id));
     return $response;
-});
+})->add($mdwAuth);
 
 //TRAER Turno POR TIPO DE MASCOTA *************************/
 $app->post('/traerTurnosPorTipoDeMascota',function ($request,$response){
@@ -226,7 +226,7 @@ $app->post('/traerTurnosPorTipoDeMascota',function ($request,$response){
     $tipo = $datos['tipo'];
     $response->write(turno::traerTurnosPorTipoDeMascota($tipo));
     return $response;
-});
+})->add($mdwAuth);
 
 //MODIFICAR Turno *************************/
 $app->post('/modificarTurno',function($request,$response){
@@ -238,7 +238,7 @@ $app->post('/modificarTurno',function($request,$response){
     $response->write(turno::modificarTurno($id,$id_mascota,$fecha,$observaciones));
 
     return $response;
-});
+})->add($mdwAuth);
 
 //BORRAR Turno *************************/
 $app->post('/borrarTurno',function ($request,$response){
@@ -246,7 +246,7 @@ $app->post('/borrarTurno',function ($request,$response){
     $id = $datos['id'];
     $response->write(turno::borrarTurno($id));
     return $response;
-});
+})->add($mdwAuth);
 
 //**********************************//
 
