@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2018 a las 07:14:40
+-- Tiempo de generación: 24-06-2018 a las 22:59:17
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -43,11 +43,14 @@ CREATE TABLE `mascotas` (
 --
 
 INSERT INTO `mascotas` (`id_mascota`, `id_duenio`, `nombre`, `raza`, `color`, `edad`, `tipo`) VALUES
-(1, 1, 'pichy', 'cocker', 'rubio', 1, 200),
-(2, 2, 'michy', 'siames', 'negro', 10, 100),
-(3, 3, 'cucho', 'siames', 'gris', 4, 100),
-(4, 3, 'pepito', 'labrador', 'marron', 1, 200),
-(5, 5, 'michifus', 'alpino', 'blanco', 12, 100);
+(301, 2, 'michifus', 'persa', 'marron claro', 3, 100),
+(302, 2, 'felipe', 'siames', 'gris', 12, 100),
+(303, 3, 'adolfo', 'pastor aleman', 'marron y negro', 12, 200),
+(304, 3, 'porqueria', 'caniche toy', 'blanco', 1, 200),
+(305, 4, 'vaya', 'beagle', 'marron claro', 6, 200),
+(306, 4, 'rodolfo', 'persa', 'gris', 4, 100),
+(307, 7, 'luca', 'boxer', 'blanco y marron', 11, 200),
+(310, 7, 'michy', 'siames', 'gris', 1, 100);
 
 -- --------------------------------------------------------
 
@@ -67,9 +70,15 @@ CREATE TABLE `turnos` (
 --
 
 INSERT INTO `turnos` (`id_turno`, `id_mascota`, `fecha`, `observaciones`) VALUES
-(1, 2, '2018-06-12', 'pulgas'),
-(2, 3, '2018-06-03', 'pierna rota'),
-(3, 4, '2018-07-10', 'castracion');
+(2, 302, '2018-06-14', 'pulgas'),
+(3, 301, '2018-06-14', 'pulgas'),
+(6, 310, '2018-06-26', 'castracion'),
+(7, 310, '2018-06-22', 'castracion'),
+(8, 305, '2018-07-12', 'moquillo'),
+(9, 307, '2018-06-28', 'ojos llorosos'),
+(10, 306, '2018-07-12', 'pata lastimada'),
+(11, 301, '2018-07-11', 'castracion'),
+(12, 304, '2018-07-19', 'castracion');
 
 -- --------------------------------------------------------
 
@@ -96,7 +105,7 @@ INSERT INTO `usuarios` (`id_usuario`, `mail`, `password`, `nombre`, `apellido`, 
 (3, 'mrod@gmail.com', '111111', 'micaela', 'rodriguez', 2),
 (4, 'mlett@gmail.com', '111111', 'mario', 'mazzeo', 2),
 (5, '2', '2', '2', '2', 2),
-(7, 'pepitop@hotmail.com', '123456', 'pepe', 'torres', 2);
+(7, 'pepitop@hotmail.com', '111111', 'pepe', 'torres', 2);
 
 --
 -- Índices para tablas volcadas
@@ -130,13 +139,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=311;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
