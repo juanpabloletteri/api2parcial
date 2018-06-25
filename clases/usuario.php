@@ -68,6 +68,18 @@ class usuario {
         return json_encode($datos);     
     }
 
+    //PARA EL PROFESOR
+    //TRAER usuario POR TIPO
+    public static function traerUsuarioPorTipo($tipo)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios WHERE tipo=:tipo");
+        $consulta->bindValue(":tipo",$tipo);
+        $consulta->execute();
+        $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($datos);     
+    }
+
    //MODIFICAR usuario
     public static function modificarUsuario($id,$mail,$password,$nombre,$apellido,$tipo){
         $rta = false;

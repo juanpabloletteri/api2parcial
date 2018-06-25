@@ -74,6 +74,14 @@ $app->post('/leerHeader', function (Request $request, Response $response) {
 });
 //************************//
 
+/////PARA EL PROFESOR
+//TRAER USUARIO POR ID *************************/
+$app->post('/traerUsuarioPorTipo',function ($request,$response){
+    $datos = $request->getParsedBody();
+    $tipo = $datos['tipo'];
+    $response->write(usuario::traerUsuarioPorTipo($tipo));
+    return $response;
+});
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -88,7 +96,7 @@ $app->post('/agregarUsuario',function($request,$response){
     $apellido = $datos['apellido'];
     $tipo = $datos['tipo'];
     $response->write(usuario::agregarUsuario($mail,$password,$nombre,$apellido,$tipo));
-})->add($mdwAuth);
+});
 
 //TRAER TODOS LOS USUARIOS *************************/
 $app->get('/traerTodosLosUsuarios',function ($request,$response){
