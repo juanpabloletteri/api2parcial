@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2018 a las 22:59:17
+-- Tiempo de generación: 26-06-2018 a las 03:59:52
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -50,7 +50,8 @@ INSERT INTO `mascotas` (`id_mascota`, `id_duenio`, `nombre`, `raza`, `color`, `e
 (305, 4, 'vaya', 'beagle', 'marron claro', 6, 200),
 (306, 4, 'rodolfo', 'persa', 'gris', 4, 100),
 (307, 7, 'luca', 'boxer', 'blanco y marron', 11, 200),
-(310, 7, 'michy', 'siames', 'gris', 1, 100);
+(310, 7, 'michy', 'siames', 'gris', 1, 100),
+(321, 21, 'qwerty', 'salchicha', 'marron', 6, 200);
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,7 @@ INSERT INTO `mascotas` (`id_mascota`, `id_duenio`, `nombre`, `raza`, `color`, `e
 CREATE TABLE `turnos` (
   `id_turno` int(11) NOT NULL,
   `id_mascota` int(11) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` datetime NOT NULL,
   `observaciones` varchar(200) COLLATE utf16_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_spanish_ci;
 
@@ -70,15 +71,18 @@ CREATE TABLE `turnos` (
 --
 
 INSERT INTO `turnos` (`id_turno`, `id_mascota`, `fecha`, `observaciones`) VALUES
-(2, 302, '2018-06-14', 'pulgas'),
-(3, 301, '2018-06-14', 'pulgas'),
-(6, 310, '2018-06-26', 'castracion'),
-(7, 310, '2018-06-22', 'castracion'),
-(8, 305, '2018-07-12', 'moquillo'),
-(9, 307, '2018-06-28', 'ojos llorosos'),
-(10, 306, '2018-07-12', 'pata lastimada'),
-(11, 301, '2018-07-11', 'castracion'),
-(12, 304, '2018-07-19', 'castracion');
+(2, 302, '2018-06-14 10:00:00', 'pulgas'),
+(3, 301, '2018-06-14 10:30:00', 'pulgas'),
+(6, 310, '2018-06-26 11:15:00', 'castracion'),
+(7, 310, '2018-06-22 12:00:00', 'castracion'),
+(8, 305, '2018-07-12 11:10:00', 'moquillo'),
+(9, 307, '2018-06-28 12:33:00', 'ojos llorosos'),
+(10, 306, '2018-07-12 14:40:00', 'pata lastimada'),
+(11, 301, '2018-07-11 15:00:00', 'castracion'),
+(12, 304, '2018-07-19 15:20:00', 'castracion'),
+(13, 303, '2018-08-17 15:50:00', 'desparasitacion'),
+(23, 321, '2018-06-28 16:10:00', 'castracion'),
+(24, 302, '2018-06-16 15:30:00', 'pulgas');
 
 -- --------------------------------------------------------
 
@@ -105,7 +109,9 @@ INSERT INTO `usuarios` (`id_usuario`, `mail`, `password`, `nombre`, `apellido`, 
 (3, 'mrod@gmail.com', '111111', 'micaela', 'rodriguez', 2),
 (4, 'mlett@gmail.com', '111111', 'mario', 'mazzeo', 2),
 (5, '2', '2', '2', '2', 2),
-(7, 'pepitop@hotmail.com', '111111', 'pepe', 'torres', 2);
+(7, 'pepitop@hotmail.com', '111111', 'pepe', 'torres', 2),
+(9, 'cacho@gmail.com', '111111', 'cacho', 'castacha', 2),
+(21, 'nuevo@gmail.com', '2', 'nuevo', 'cliente', 2);
 
 --
 -- Índices para tablas volcadas
@@ -139,19 +145,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=311;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas
