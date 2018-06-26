@@ -102,7 +102,14 @@ $app->post('/agregarUsuario',function($request,$response){
     $nombre = $datos['nombre'];
     $apellido = $datos['apellido'];
     $tipo = $datos['tipo'];
-    $response->write(usuario::agregarUsuario($mail,$password,$nombre,$apellido,$tipo));
+    if(usuario::verificarMail($mail)){
+        $response->write(usuario::agregarUsuario($mail,$password,$nombre,$apellido,$tipo));
+    }
+    else{
+        $newResponse = $response->withJson('Mail en uso');
+        return $newResponse;
+    }
+    
 });
 
 //TRAER TODOS LOS USUARIOS *************************/

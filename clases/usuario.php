@@ -34,10 +34,10 @@ class usuario {
     $consulta->execute();
     $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
     if(isset($datos[0])){
-       return json_encode($datos[0]['mail']);
+       return false;
     }
     else{
-        return json_encode($datos);
+        return true;
     }
    }
 
