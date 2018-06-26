@@ -26,6 +26,21 @@ class usuario {
         return $rta;
     }
 
+   //VERIFICAR MAIL
+   public static function verificarMail($mail){
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios WHERE mail=:mail");
+    $consulta->bindValue(":mail",$mail);
+    $consulta->execute();
+    $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+    if(isset($datos[0])){
+       return json_encode($datos[0]['mail']);
+    }
+    else{
+        return json_encode($datos);
+    }
+   }
+
     //AGREGAR usuario
     public static function agregarUsuario($mail,$password,$nombre,$apellido,$tipo)
     {

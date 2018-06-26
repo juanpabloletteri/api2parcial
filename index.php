@@ -87,6 +87,13 @@ $app->post('/traerUsuarioPorTipo',function ($request,$response){
 ///////////////////////////////////////////////////////////////////////
 //************ USUARIOS ************//
 
+//VERIFICAR MAIL  *************************/
+$app->post('/verificarMail',function($request,$response){
+    $datos = $request->getParsedBody();
+    $mail = $datos['mail'];
+    $response->write(usuario::verificarMail($mail));
+});
+
 //AGREGAR USUARIO  *************************/
 $app->post('/agregarUsuario',function($request,$response){
     $datos = $request->getParsedBody();
